@@ -34,10 +34,11 @@ namespace pryMarconiSP2
             this.numDias = new System.Windows.Forms.NumericUpDown();
             this.txtDistancia = new System.Windows.Forms.TextBox();
             this.mrcCosto = new System.Windows.Forms.GroupBox();
-            this.lblPrecio = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.lblPrecioresultado = new System.Windows.Forms.Label();
+            this.lblTotalresultado = new System.Windows.Forms.Label();
+            this.btnCalcular = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numDias)).BeginInit();
             this.mrcCosto.SuspendLayout();
             this.SuspendLayout();
@@ -76,8 +77,8 @@ namespace pryMarconiSP2
             // 
             // mrcCosto
             // 
-            this.mrcCosto.Controls.Add(this.txtTotal);
-            this.mrcCosto.Controls.Add(this.txtPrecio);
+            this.mrcCosto.Controls.Add(this.lblTotalresultado);
+            this.mrcCosto.Controls.Add(this.lblPrecioresultado);
             this.mrcCosto.Controls.Add(this.lblTotal);
             this.mrcCosto.Controls.Add(this.lblPrecio);
             this.mrcCosto.Location = new System.Drawing.Point(15, 124);
@@ -86,15 +87,6 @@ namespace pryMarconiSP2
             this.mrcCosto.TabIndex = 4;
             this.mrcCosto.TabStop = false;
             this.mrcCosto.Text = "Costo";
-            // 
-            // lblPrecio
-            // 
-            this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(6, 60);
-            this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(37, 13);
-            this.lblPrecio.TabIndex = 0;
-            this.lblPrecio.Text = "Precio";
             // 
             // lblTotal
             // 
@@ -105,25 +97,47 @@ namespace pryMarconiSP2
             this.lblTotal.TabIndex = 1;
             this.lblTotal.Text = "Total";
             // 
-            // txtPrecio
+            // lblPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(100, 57);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(120, 20);
-            this.txtPrecio.TabIndex = 2;
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Location = new System.Drawing.Point(6, 60);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(37, 13);
+            this.lblPrecio.TabIndex = 0;
+            this.lblPrecio.Text = "Precio";
             // 
-            // txtTotal
+            // lblPrecioresultado
             // 
-            this.txtTotal.Location = new System.Drawing.Point(100, 110);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(120, 20);
-            this.txtTotal.TabIndex = 3;
+            this.lblPrecioresultado.AutoSize = true;
+            this.lblPrecioresultado.Location = new System.Drawing.Point(117, 60);
+            this.lblPrecioresultado.Name = "lblPrecioresultado";
+            this.lblPrecioresultado.Size = new System.Drawing.Size(0, 13);
+            this.lblPrecioresultado.TabIndex = 2;
+            // 
+            // lblTotalresultado
+            // 
+            this.lblTotalresultado.AutoSize = true;
+            this.lblTotalresultado.Location = new System.Drawing.Point(117, 113);
+            this.lblTotalresultado.Name = "lblTotalresultado";
+            this.lblTotalresultado.Size = new System.Drawing.Size(0, 13);
+            this.lblTotalresultado.TabIndex = 3;
+            // 
+            // btnCalcular
+            // 
+            this.btnCalcular.Location = new System.Drawing.Point(115, 327);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(75, 23);
+            this.btnCalcular.TabIndex = 5;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 316);
+            this.ClientSize = new System.Drawing.Size(323, 362);
+            this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.mrcCosto);
             this.Controls.Add(this.txtDistancia);
             this.Controls.Add(this.numDias);
@@ -146,10 +160,11 @@ namespace pryMarconiSP2
         private System.Windows.Forms.NumericUpDown numDias;
         private System.Windows.Forms.TextBox txtDistancia;
         private System.Windows.Forms.GroupBox mrcCosto;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.Label lblTotalresultado;
+        private System.Windows.Forms.Label lblPrecioresultado;
+        private System.Windows.Forms.Button btnCalcular;
     }
 }
 

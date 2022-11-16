@@ -34,11 +34,12 @@ namespace pryMarconiSP2
             this.numDias = new System.Windows.Forms.NumericUpDown();
             this.txtDistancia = new System.Windows.Forms.TextBox();
             this.mrcCosto = new System.Windows.Forms.GroupBox();
+            this.lblTotalresultado = new System.Windows.Forms.Label();
+            this.lblPrecioresultado = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.lblPrecioresultado = new System.Windows.Forms.Label();
-            this.lblTotalresultado = new System.Windows.Forms.Label();
-            this.btnCalcular = new System.Windows.Forms.Button();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtPrecioKm = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numDias)).BeginInit();
             this.mrcCosto.SuspendLayout();
             this.SuspendLayout();
@@ -63,20 +64,25 @@ namespace pryMarconiSP2
             // 
             // numDias
             // 
-            this.numDias.Location = new System.Drawing.Point(115, 26);
+            this.numDias.Location = new System.Drawing.Point(97, 26);
             this.numDias.Name = "numDias";
-            this.numDias.Size = new System.Drawing.Size(120, 20);
+            this.numDias.Size = new System.Drawing.Size(138, 20);
             this.numDias.TabIndex = 2;
+            this.numDias.ValueChanged += new System.EventHandler(this.numDias_ValueChanged);
             // 
             // txtDistancia
             // 
-            this.txtDistancia.Location = new System.Drawing.Point(115, 84);
+            this.txtDistancia.Location = new System.Drawing.Point(97, 84);
             this.txtDistancia.Name = "txtDistancia";
-            this.txtDistancia.Size = new System.Drawing.Size(120, 20);
+            this.txtDistancia.Size = new System.Drawing.Size(138, 20);
             this.txtDistancia.TabIndex = 3;
+            this.txtDistancia.TextChanged += new System.EventHandler(this.txtDistancia_TextChanged);
+            this.txtDistancia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDistancia_KeyPress);
             // 
             // mrcCosto
             // 
+            this.mrcCosto.Controls.Add(this.txtTotal);
+            this.mrcCosto.Controls.Add(this.txtPrecioKm);
             this.mrcCosto.Controls.Add(this.lblTotalresultado);
             this.mrcCosto.Controls.Add(this.lblPrecioresultado);
             this.mrcCosto.Controls.Add(this.lblTotal);
@@ -87,6 +93,22 @@ namespace pryMarconiSP2
             this.mrcCosto.TabIndex = 4;
             this.mrcCosto.TabStop = false;
             this.mrcCosto.Text = "Costo";
+            // 
+            // lblTotalresultado
+            // 
+            this.lblTotalresultado.AutoSize = true;
+            this.lblTotalresultado.Location = new System.Drawing.Point(117, 113);
+            this.lblTotalresultado.Name = "lblTotalresultado";
+            this.lblTotalresultado.Size = new System.Drawing.Size(0, 13);
+            this.lblTotalresultado.TabIndex = 3;
+            // 
+            // lblPrecioresultado
+            // 
+            this.lblPrecioresultado.AutoSize = true;
+            this.lblPrecioresultado.Location = new System.Drawing.Point(117, 60);
+            this.lblPrecioresultado.Name = "lblPrecioresultado";
+            this.lblPrecioresultado.Size = new System.Drawing.Size(0, 13);
+            this.lblPrecioresultado.TabIndex = 2;
             // 
             // lblTotal
             // 
@@ -106,38 +128,27 @@ namespace pryMarconiSP2
             this.lblPrecio.TabIndex = 0;
             this.lblPrecio.Text = "Precio";
             // 
-            // lblPrecioresultado
+            // txtTotal
             // 
-            this.lblPrecioresultado.AutoSize = true;
-            this.lblPrecioresultado.Location = new System.Drawing.Point(117, 60);
-            this.lblPrecioresultado.Name = "lblPrecioresultado";
-            this.lblPrecioresultado.Size = new System.Drawing.Size(0, 13);
-            this.lblPrecioresultado.TabIndex = 2;
+            this.txtTotal.Location = new System.Drawing.Point(82, 110);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(138, 20);
+            this.txtTotal.TabIndex = 10;
             // 
-            // lblTotalresultado
+            // txtPrecioKm
             // 
-            this.lblTotalresultado.AutoSize = true;
-            this.lblTotalresultado.Location = new System.Drawing.Point(117, 113);
-            this.lblTotalresultado.Name = "lblTotalresultado";
-            this.lblTotalresultado.Size = new System.Drawing.Size(0, 13);
-            this.lblTotalresultado.TabIndex = 3;
-            // 
-            // btnCalcular
-            // 
-            this.btnCalcular.Location = new System.Drawing.Point(115, 327);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(75, 23);
-            this.btnCalcular.TabIndex = 5;
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.UseVisualStyleBackColor = true;
-            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
+            this.txtPrecioKm.Location = new System.Drawing.Point(82, 57);
+            this.txtPrecioKm.Name = "txtPrecioKm";
+            this.txtPrecioKm.ReadOnly = true;
+            this.txtPrecioKm.Size = new System.Drawing.Size(138, 20);
+            this.txtPrecioKm.TabIndex = 9;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 362);
-            this.Controls.Add(this.btnCalcular);
+            this.ClientSize = new System.Drawing.Size(323, 326);
             this.Controls.Add(this.mrcCosto);
             this.Controls.Add(this.txtDistancia);
             this.Controls.Add(this.numDias);
@@ -164,7 +175,8 @@ namespace pryMarconiSP2
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblTotalresultado;
         private System.Windows.Forms.Label lblPrecioresultado;
-        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtPrecioKm;
     }
 }
 

@@ -19,26 +19,62 @@ namespace pryMarconiSP2
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            int vDias = 0;
-            int vDistancia = 0;
-            int vCosto = 1500;
-            int vPrecio = 0;
-            int vTotal = 0;
+         
+        }
 
-            vDias = Convert.ToInt32(numDias.Value);
-            vDistancia = Convert.ToInt32(txtDistancia.Text);
-            vPrecio = vDistancia * vCosto;
-            vTotal = vPrecio / 2;
-
-            if (vDistancia >= 100 && vDias >= 7)
+        private void txtDistancia_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDistancia.Text != "")
             {
-                lblPrecioresultado.Text = ("$") + Convert.ToInt32(vPrecio);
-                lblTotalresultado.Text = ("$") + vTotal.ToString() + "" + ("Su descuento es del 50%");
+                float precioTotal = Convert.ToInt32(txtDistancia.Text) * 5;
+                if (int.Parse(txtDistancia.Text) >= 100 && numDias.Value >= 7)
+                {
+                    precioTotal = precioTotal * 0.5f;
+                    txtTotal.Text = precioTotal.ToString();
+                    txtPrecioKm.Text = "2,5";
+                }
+                else
+                {
+                    txtTotal.Text = precioTotal.ToString();
+                    txtPrecioKm.Text = "5";
+                }
             }
             else
             {
-                lblPrecioresultado.Text = ("$") + Convert.ToString(vPrecio);
-                lblTotalresultado.Text = ("$") + Convert.ToString(vPrecio);
+                txtPrecioKm.Text = "";
+                txtTotal.Text = "";
+            }
+        }
+
+        private void numDias_ValueChanged(object sender, EventArgs e)
+        {
+            if (txtDistancia.Text != "")
+            {
+                double precioTotal = Convert.ToInt32(txtDistancia.Text) * 5;
+                if (int.Parse(txtDistancia.Text) >= 100 && numDias.Value >= 7)
+                {
+                    precioTotal = precioTotal * 0.5;
+                    txtTotal.Text = precioTotal.ToString();
+                    txtPrecioKm.Text = "2,5";
+                }
+                else
+                {
+                    txtTotal.Text = precioTotal.ToString();
+                    txtPrecioKm.Text = "5";
+                }
+            }
+            else
+            {
+                txtPrecioKm.Text = "";
+                txtTotal.Text = "";
+            }
+        }
+
+        private void txtDistancia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
